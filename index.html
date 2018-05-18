@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--<link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&amp;subset=cyrillic" rel="stylesheet">-->
+    <script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script type="application/javascript" src="http://twitter.github.com/typeahead.js/releases/latest/typeahead.bundle.min.js"></script> -->
+    <script type="application/javascript" src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
+    <script src="http://sparrow-html.weblionmedia.com/js/jquery.formstyler.js"></script>
+    <!--<link rel="stylesheet" href="http://sparrow-html.weblionmedia.com/css/jquery.formstyler.css">-->
+    <!--<link rel="stylesheet" href="./src/assets/css/jquery.formstyler.css">-->
+    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+    <!--<link rel="stylesheet" href="./src/assets/css/jquery-ui.css">-->
+    <!--<link rel="stylesheet" href="https://unpkg.com/nprogress@0.2.0/nprogress.css">-->
+    <!--<link rel="stylesheet" href="./src/assets/css/nprogress.css">-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>frontend</title>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!--<script src="./src/assets/js/jquery-ui.js"></script>-->
+    <script type="text/javascript">
+
+      // var searchAPI = 'http://localhost:7782';
+
+      // $( function() {
+      //   var dateFormat = "yy-mm-dd",
+      //     from = $( "#from" )
+      //       .datepicker({
+      //         dateFormat: "yy-mm-dd",
+      //         // defaultDate: "+1w",
+      //         // changeMonth: true,
+      //         numberOfMonths: 3,
+      //         beforeShow: function(input, inst) {
+      //           // inst.dpDiv.css({marginTop: -input.offsetHeight + 'px', marginLeft: input.offsetWidth + 'px'});
+      //           inst.dpDiv.css({width: 'auto'});
+      //           var calendar = inst.dpDiv;
+      //
+      //           // Dirty hack, but we can't do anything without it (for now, in jQuery UI 1.8.20)
+      //           setTimeout(function() {
+      //             calendar.position({
+      //               my: 'center top',
+      //               at: 'center bottom',
+      //               collision: 'none',
+      //               of: input
+      //             });
+      //             inst.dpDiv.css({width: 'auto'});
+      //           }, 1);
+      //
+      //           // $( "#to" ).focus()
+      //         }
+      //       })
+      //       .on( "change", function() {
+      //         to.datepicker( "option", "minDate", getDate( this ) );
+      //       }),
+      //     to = $( "#to" ).datepicker({
+      //       dateFormat: "yy-mm-dd",
+      //       // defaultDate: "+1w",
+      //       // changeMonth: true,
+      //       numberOfMonths: 3,
+      //       beforeShow: function(input, inst) {
+      //         // inst.dpDiv.css({marginTop: -input.offsetHeight + 'px', marginLeft: input.offsetWidth + 'px'});
+      //         inst.dpDiv.css({width: 'auto'});
+      //         var calendar = inst.dpDiv;
+      //
+      //         // Dirty hack, but we can't do anything without it (for now, in jQuery UI 1.8.20)
+      //         setTimeout(function() {
+      //           calendar.position({
+      //             my: 'center top',
+      //             at: 'center bottom',
+      //             collision: 'none',
+      //             of: input
+      //           });
+      //           inst.dpDiv.css({width: 'auto'});
+      //         }, 1);
+      //       }
+      //     })
+      //       .on( "change", function() {
+      //         from.datepicker( "option", "maxDate", getDate( this ) );
+      //       });
+      //
+      //   // $(".page-search-p").datepicker({
+      //   // // $("#from").datepicker({
+      //   //   // dateFormat: "yy-mm-dd",
+      //   //   minDate: 0,
+      //   //   numberOfMonths: 3,
+      //   //   beforeShowDay: function(date) {
+      //   //     var date1 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, $("#from").val());
+      //   //     var date2 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, $("#to").val());
+      //   //     return [true, date1 && ((date.getTime() == date1.getTime()) || (date2 && date >= date1 && date <= date2)) ? "dp-highlight" : ""];
+      //   //   },
+      //   //   onSelect: function(dateText, inst) {
+      //   //     var date1 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, $("#from").val());
+      //   //     var date2 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, $("#to").val());
+      //   //     var selectedDate = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dateText);
+      //   //
+      //   //
+      //   //     if (!date1 || date2) {
+      //   //       $("#from").val(dateText).focus();
+      //   //       $("#to").val("");
+      //   //       $(this).datepicker();
+      //   //     } else if( selectedDate < date1 ) {
+      //   //       $("#to").val( $("#from").val() );
+      //   //       $("#from").val( dateText ).focus();
+      //   //       $(this).datepicker();
+      //   //     } else {
+      //   //       $("#to").val(dateText).focus();
+      //   //       $(this).datepicker();
+      //   //     }
+      //   //     return false
+      //   //   }
+      //   // })
+      //   // }).find(".ui-datepicker").hide()
+      //
+      //   // $('#from').focusin(function(){
+      //   //   $(".ui-datepicker").show();
+      //   // }).focusout(function(){
+      //   //   $(".ui-datepicker").hide();
+      //   // });
+      //   // $('#to').focusin(function(){
+      //   //   $(".ui-datepicker").show();
+      //   // }).focusout(function(){
+      //   //   $(".ui-datepicker").hide();
+      //   // });
+      //
+      //
+      //
+      //   function getDate( element ) {
+      //     var date;
+      //     try {
+      //       date = $.datepicker.parseDate( dateFormat, element.value );
+      //     } catch( error ) {
+      //       date = null;
+      //     }
+      //
+      //     return date;
+      //   }
+      // } );
+
+      // (function($) {
+      //   $(function() {
+      //     // $('input:checkbox,input:radio,.search-engine-range-selection-container input:radio').styler();
+      //   })
+      // })(jQuery);
+      //
+      // $( function() {
+      //   $( "#spinner1" ).spinner({
+      //     min: 0,
+      //     max: 5,
+      //   }).spinner("value", 2);
+      // } );
+      // $( function() {
+      //   $( "#spinner2" ).spinner({
+      //     min: 0,
+      //     max: 5,
+      //   }).spinner("value", 0);
+      // } );
+
+    </script>
+    <!--<link defer href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">-->
+    <!--<link defer href="http://fonts.googleapis.com/css?family=Lora:400,400italic" rel="stylesheet" type="text/css">-->
+    <!--<link defer href="http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,600,700,800" rel="stylesheet" type="text/css">-->
+    <!--<link defer href="http://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet" type="text/css">-->
+    <!--<link defer href="http://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">-->
+    <!--<link defer href="http://fonts.googleapis.com/css?family=Lato:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">-->
+    <!--<link defer href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">-->
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>
