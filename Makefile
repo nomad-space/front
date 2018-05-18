@@ -1,5 +1,5 @@
 PROJECT?=github.com/nomad/front
-APP?=nomadfront
+APP?=front
 PORT_CONTAINER?=80
 PORT_APP?=80
 HOST?=mvp.nomad.space
@@ -7,7 +7,7 @@ HOST?=mvp.nomad.space
 RELEASE?=0.3.0
 COMMIT?=$(shell git rev-parse --short HEAD)
 BUILD_TIME?=$(shell date -u '+%Y-%m-%d_%H:%M:%S')
-CONTAINER_IMAGE?=nomad/${APP}
+CONTAINER_IMAGE?=nomadspace/${APP}
 
 GOOS?=linux
 GOARCH?=amd64
@@ -34,8 +34,6 @@ run:
 test:
 	go test -v -race ./...
 
-
-# minikube:
 minikube: push
 	for t in $$(find ./kubernetes -type f -name "*.yaml"); do \
         cat $$t | \
