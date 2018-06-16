@@ -27,7 +27,7 @@
     </label>
 
     <div class="tour-i-holder">
-      <div class="tour-icon-txt" style="width: 300px; font-size: 10px;">* - OTA/DAO loyality programm</div>
+      <div class="tour-icon-txt" style="width: 300px; font-size: 10px; padding-top: 10px">* - OTA/DAO loyality programm</div>
       <div class="clear"></div>
     </div>
   </div>

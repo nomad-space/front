@@ -9,13 +9,43 @@
     data () {
       return {
         name: null,
+        windowWidth: 0,
       }
     },
+    props: ['position', 'mindate', 'maxdate'],
     methods: {
 
     },
+    watch: {
+      mindate: function (val) {
+        console.log('watch mindate', val)
+        $(this.$el).datepicker( "option", "minDate", val)
+      },
+      maxdate: function (val) {
+        console.log('watch maxdate', val)
+        $(this.$el).datepicker( "option", "maxDate", val)
+      },
+      windowWidth(newWidth, oldWidth) {
+
+        var self = this
+
+        if (newWidth < 1130) {
+          $(self.$el).datepicker( "option", "numberOfMonths", 1 )
+        } else {
+          $(self.$el).datepicker( "option", "numberOfMonths", 3 )
+          $(self.$el).css({width: 'auto'});
+        }
+      }
+    },
     mounted(){
       var self = this;
+
+      this.windowWidth = window.innerWidth
+      this.$nextTick(() => {
+        window.addEventListener('resize', () => {
+          this.windowWidth = window.innerWidth
+        });
+      })
 
       $(self.$el).datepicker({
         dateFormat: "yy-mm-dd",
@@ -31,10 +61,15 @@
           setTimeout(function() {
             calendar.position({
               my: 'center top',
-              at: 'center bottom',
+              at: self.position,
               collision: 'none',
               of: input
             });
+            inst.dpDiv.css({width: 'auto'});
+          }, 1);
+        },
+        onChangeMonthYear: function(year, month, inst) {
+          setTimeout(function() {
             inst.dpDiv.css({width: 'auto'});
           }, 1);
         },
@@ -43,6 +78,12 @@
           self.$emit("change", input)
         }
       })
+      if (self.mindate) {
+        $(this.$el).datepicker( "option", "minDate", self.mindate)
+      }
+      if (self.maxdate) {
+        $(this.$el).datepicker( "option", "maxDate", self.maxdate)
+      }
     },
     destroyed () {
       $(self.$el).datepicker('destroy')

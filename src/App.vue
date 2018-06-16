@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="$route.name">
     <Header @openSignin="showAuthPopup = true"/>
     <AuthPopup v-if="showAuthPopup" @close="showAuthPopup = false"/>
     <router-view/>
@@ -39,7 +39,9 @@
   @import "./assets/css/Open_Sans.css";
   @import "./assets/css/Roboto_Mono.css";
 
-  #app {width: 100%; height: 300px; background-image: url(./assets/img/sider-01.jpg); background-size: cover; padding-top: 40px}
+  #app {width: 100%; height: 300px; background-image: none; background-size: cover; padding-top: 40px}
+  /*#app.CallCenter {background-image: none}*/
+  #app.Search, #app.Booking {background-image: url(./assets/img/sider-01.jpg)}
 
   html { -webkit-text-size-adjust: auto; -ms-text-size-adjust: auto; }
   html, body, img, form {margin: 0px; padding: 0px; border: none; letter-spacing:normal;}
@@ -478,8 +480,8 @@
   .ui-state-default.ui-state-active {background:#ff7200 !important; color:#fff;}
   .ui-datepicker th {font-size:11px; font-weight:normal;}
   .ui-datepicker {padding:10px 14px 10px 14px;margin-left:-8px; margin-top:15px; width:252px;}
-  /*.ui-widget-header .ui-icon.ui-icon-circle-triangle-w {width:4px; height:8px; left:10px; background:url(./assets/img/cal-left.png) left top no-repeat; background-position:0px 0px;}*/
-  /*.ui-widget-header .ui-icon.ui-icon-circle-triangle-e {width:4px; height:8px; left:auto; margin-left:0px; right:0px; background:url(./assets/img/cal-right.png) left top no-repeat; background-position:0px 0px;}*/
+  .ui-widget-header .ui-icon.ui-icon-circle-triangle-w {width:4px; height:8px; left:10px; background:url(./assets/img/cal-left.png) left top no-repeat; background-position:0px 0px;}
+  .ui-widget-header .ui-icon.ui-icon-circle-triangle-e {width:4px; height:8px; left:auto; margin-left:0px; right:0px; background:url(./assets/img/cal-right.png) left top no-repeat; background-position:0px 0px;}
   .ui-datepicker .ui-datepicker-prev {left:0px; cursor:pointer;}
   .ui-datepicker .ui-datepicker-next {right:0px; cursor:pointer;}
   .ui-corner-all.ui-state-hover {border-color:transparent; background:transparent; }
@@ -670,10 +672,10 @@
   .cat-list-item {background: #fff; overflow:hidden; margin: 20px 0px 20px 0px;}
 
   .cat-list-content-a {width:100%; float: left; }
-  .cat-list-content-l {margin:0px 125px 0px 0px;}
+  .cat-list-content-l {margin:0px 150px 0px 0px;}
   .cat-list-content-lb {width:100%; float:left; overflow:hidden;}
-  .cat-list-content-lpadding {padding: 18px 30px 7px 0px; min-height: 156px;  border-right: 1px solid #ede7e1 ;}
-  .cat-list-content-r {width:124px;  float:left; overflow:hidden; margin:0 0 0 -125px;}
+  .cat-list-content-lpadding {padding: 18px 30px 7px 0px; min-height: 184px;  border-right: 1px solid #ede7e1 ;}
+  .cat-list-content-r {width:149px;  float:left; overflow:hidden; margin:0 0 0 -150px;}
   .cat-list-content-p {padding:17px 0px 17px 18px; }
   .cat-list-item .offer-slider-link {font-family: 'Raleway'; color:#252525; margin-bottom:8px;}
   .cat-list-item .offer-slider-location {font-size: 10px; line-height: 15px; margin-bottom:0px;  font-family: 'Raleway'; font-weight: 500; text-transform: uppercase;}
@@ -690,6 +692,7 @@
   .cat-list-item .offer-slider-r {float: none; margin-bottom: 18px; font-family: 'Raleway';}
   .cat-list-item .stars {margin-bottom: 7px;}
   .cat-list-btn {display: inline-block; font-family: 'Montserrat'; font-weight:normal; background: #fff; padding:9px 15px 9px 15px; border-radius: 3px; border:1px solid #e5e5e5; text-decoration: none; color:#838383; font-size: 10px; text-transform: uppercase;}
+  button.cat-list-btn {cursor: pointer}
   .cat-list-btn:hover {color:#ff7200;}
   .cat-list-item .cat-list-btn {padding-left:20px; padding-right:20px;}
   .cat-list-content-l .offer-slider-link {margin-bottom:8px;}
@@ -3405,6 +3408,27 @@
       .footer-a .section:nth-child(3) {
         margin-bottom: 43px;
       }
+
+      .tour-i-holder {
+        float: left;
+        width: 130px;
+        display: inline-block;
+      }
+      .tour-icon-txt {
+        float: left;
+        font-size: 12px;
+        margin: 2px 0px 2px 9px;
+        color: #747d7e;
+        font-family: 'Raleway';
+        font-weight: 600;
+        text-transform: uppercase;
+        width: 100px;
+      }
+      .prices .width50 {
+        display: inline-block;
+        width: 85px;
+        margin: 0px;
+      }
     }
 
 
@@ -4729,6 +4753,27 @@
       .testimonials-flat {
         padding: 30px 0px 0px 0px;
         height: 330px;
+      }
+
+      .tour-i-holder {
+        float: left;
+        width: 130px;
+        display: inline-block;
+      }
+      .tour-icon-txt {
+        float: left;
+        font-size: 12px;
+        margin: 2px 0px 2px 9px;
+        color: #747d7e;
+        font-family: 'Raleway';
+        font-weight: 600;
+        text-transform: uppercase;
+        width: 100px;
+      }
+      .prices .width50 {
+        display: inline-block;
+        width: 65px;
+        margin: 0px;
       }
     }
 

@@ -418,7 +418,8 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-datepicker-multi .ui-datepicker-group table {
 	width: 95%;
-	margin: 0 auto .4em;
+	#margin: 0 auto .4em;
+    margin-right: 14px;
 }
 .ui-datepicker-multi-2 .ui-datepicker-group {
 	width: 50%;
