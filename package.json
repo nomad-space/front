@@ -15,11 +15,13 @@
     "axios": "^0.18.0",
     "jquery": "^3.3.1",
     "jquery-ui": "^1.12.1",
+    "moment": "^2.22.2",
     "socket.io": "^2.0.4",
     "vue": "^2.5.16",
     "vue-autosuggest": "^1.4.1",
     "vue-axios": "^2.1.1",
     "vue-config-manager": "^0.2.2",
+    "vue-country-select": "^0.2.2",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

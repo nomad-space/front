@@ -44,7 +44,7 @@
                         </label>
 
                         <div class="tour-i-holder">
-                          <div class="tour-icon-txt" style="width: 300px; font-size: 10px;">* - OTA/DAO loyality programm</div>
+                          <div class="tour-icon-txt" style="width: 300px; font-size: 10px; padding-top: 10px;">* - OTA/DAO loyality programm</div>
                           <div class="clear"></div>
                         </div>
                       </div>
@@ -91,6 +91,7 @@
                   checkin: data.form.checkin,
                   checkout: data.form.checkout,
                   adults: data.form.adults,
+                  price: selected.price,
                    }}" class="cat-list-btn">book now</router-link>
                 <div v-if="data.prices.length && selected.is_nomad" class="cat-list-text">
                   * Consent for instant booking / or 3-day confirmation of the hotel

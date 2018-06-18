@@ -24,7 +24,7 @@ import VueAxios from 'vue-axios'
 Vue.use(VueConfigManager, {
   defaults: {
     api: {
-      base: 'http://localhost:7783',
+      base: 'http://localhost:7784',
       search: 'http://localhost:7782'
     }
   },

@@ -16,49 +16,47 @@
               <div class="sp-page-p">
                 <div class="booking-left">
                   <h2>Your Personal Information</h2>
-                  <div class="booking-form">
-                    <div class="booking-form-i">
-                      <label>First Name:</label>
-                      <div class="input"><input type="text" :value="$auth.user().firstname" value=""></div>
+                  <form v-on:submit.prevent="booking()">
+                    <div class="booking-form">
+                      <div class="booking-form-i">
+                        <label>First Name:</label>
+                        <div class="input"><input type="text" v-model="data.form.firstname"></div>
+                      </div>
+                      <div class="booking-form-i">
+                        <label>Last Name:</label>
+                        <div class="input"><input type="text" v-model="data.form.lastname"></div>
+                      </div>
+                      <div class="booking-form-i">
+                        <label>Email Adress:</label>
+                        <div class="input"><input type="text" v-model="data.form.email"></div>
+                      </div>
+                      <div class="booking-form-i">
+                        <label>Preferred Phone Number:</label>
+                        <div class="input"><input type="text" v-model="data.form.phone"></div>
+                      </div>
+                      <div class="booking-form-i">
+                        <label>Country code:</label>
+                        <div class="input">
+                          <input type="text" value="">
+                        </div>
+                      </div>
+                      <div class="clear"></div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="">
+                          I want to receive Nomad news in the future
+                        </label>
+                      </div>
+                      <div class="booking-devider"></div>
                     </div>
-                    <div class="booking-form-i">
-                      <label>Last Name:</label>
-                      <div class="input"><input type="text" :value="$auth.user().lastname" value=""></div>
+                    <h2>How would you like to pay?</h2>
+                    <Payment/>
+                    <div class="booking-complete">
+                      <h2>Review and book your trip</h2>
+                      <p>Voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui voluptatem sequi nesciunt. </p>
+                      <button type="submit" class="booking-complete-btn">COMPLETE BOOKING</button>
                     </div>
-                    <div class="booking-form-i">
-                      <label>Email Adress:</label>
-                      <div class="input"><input type="text" :value="$auth.user().email" value=""></div>
-                    </div>
-                    <div class="booking-form-i">
-                      <label>Confirm Email Adress:</label>
-                      <div class="input"><input type="text" :value="$auth.user().email" value=""></div>
-                    </div>
-                    <div class="booking-form-i">
-                      <label>Country code:</label>
-                      <div class="input"><input type="text" value=""></div>
-                    </div>
-                    <div class="booking-form-i">
-                      <label>Preferred Phone Number:</label>
-                      <div class="input"><input type="text" :value="$auth.user().phone" value=""></div>
-                    </div>
-                    <div class="clear"></div>
-                    <div class="checkbox">
-                      <label>
-                        <!--<input type="checkbox" value="" style="position: absolute; left: -9999px;"><span class="jq-checkbox" style="display: inline-block"><span></span></span>-->
-                        <input type="checkbox" value="">
-                        I want to receive Nomad news in the future
-                      </label>
-                    </div>
-                    <div class="booking-devider"></div>
-                  </div>
-                  <h2>How would you like to pay?</h2>
-                  <Payment/>
-                  <div class="booking-complete">
-                    <h2>Review and book your trip</h2>
-                    <p>Voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui voluptatem sequi nesciunt. </p>
-                    <button class="booking-complete-btn">COMPLETE BOOKING</button>
-                  </div>
-
+                  </form>
                 </div>
               </div>
             </div>
@@ -88,22 +86,42 @@
       Checkout
     },
     data () {
-      // console.log(this.$route)
-      // console.log('this.$config', this.$config('api.search'))
-      // console.log(this.$route.params)
-      // console.log(this.$route.params.searchId)
-
       return {
         context: 'booking context',
 
         data: {
+          form: {
+            firstname: this.$auth.user().firstname,
+            lastname: this.$auth.user().lastname,
+            phone: this.$auth.user().phone,
+            email: this.$auth.user().email,
+            location_id: parseInt(this.$route.params.location_id),
+            hotel_id: parseInt(this.$route.params.hotel_id),
+            gate_id: parseInt(this.$route.params.gate_id),
+            room_id: parseInt(this.$route.params.room_id),
+            checkin_date: this.$route.params.checkin,
+            checkout_date: this.$route.params.checkout,
+            adults: parseInt(this.$route.params.adults),
+            price: parseFloat(this.$route.params.price)
+          }
         },
-
+        result: null,
         error: null
       }
     },
-
     methods: {
+      booking () {
+        var self = this
+
+        this.$http.post(this.$config('api.base') + '/v1/booking/', this.data.form).then(
+          function (response) { // Success.
+            self.$router.push('/booking/complete/' + response.data.id)
+          },
+          function (response) { // Error.
+            console.log('An error occurred.')
+          }
+        )
+      }
     }
   }
 </script>
