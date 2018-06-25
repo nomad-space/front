@@ -30,13 +30,25 @@
                         <!--<span>Quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur</span>-->
                       <!--</div>-->
                     <!--</div>-->
-                    <div class="comlete-alert">
+                    <div v-if="data.status != 3 && data.status != 4" class="comlete-alert">
                       <div class="comlete-alert-a">
-                        <b style="color: #ff0000">This Order is Not Confirmed.</b>
+                        <b style="color: #ff0000">This Order is Processed.</b>
                         <span>We have a maximum of {{ days }} days to confirm the booking. {{ confirmProgressHours() }} hours left</span>
                         <div class="about-percent" style="padding-top: 5px;margin-bottom: 0px">
                           <div :data-percentage="confirmProgressStyle()" class="about-percent-a"><span :style="confirmProgressStyle()"></span></div>
                         </div>
+                      </div>
+                    </div>
+                    <div v-if="data.status == 3" class="comlete-alert">
+                      <div class="comlete-alert-a">
+                        <b style="color: #ff0000">This Order is Not Confirmed.</b>
+                        <span>Quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur</span>
+                      </div>
+                    </div>
+                    <div v-if="data.status == 4" class="comlete-alert">
+                      <div class="comlete-alert-a">
+                        <b>This Order is Confirmed.</b>
+                        <span>Quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur</span>
                       </div>
                     </div>
 
@@ -70,7 +82,6 @@
                       <div class="complete-txt">
                         <h2>Payment Info</h2>
                         <p>Voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui voluptatem sequi nesciunt. Que porro quisqua. Sed ut perspiciatis unde omnis ste natus error sit voluptatem.</p>
-                        <div class="complete-txt-link"><a href="#">Payment is made by Via Paypal.</a></div>
                       </div>
 
                       <div class="complete-devider"></div>
@@ -78,7 +89,6 @@
                       <div class="complete-txt final">
                         <h2>Booking Details</h2>
                         <p>Qoluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui voluptatem sequi nesciunt. Que porro quisqua. Sed ut perspiciatis unde omnis ste natus error.</p>
-                        <div class="complete-txt-link"><a href="#">Your Hotel Info</a></div>
                       </div>
 
                     </div>
@@ -94,14 +104,14 @@
             <div class="checkout-coll">
               <div class="checkout-head">
                 <div class="checkout-headl">
-                  <a href="#"><img alt="" src="../../assets/img/check-img.png"></a>
+                  <a href="#"><img alt="" width="94" :src="this.data.hotel[0].photos_ids.length ? (this.$config('api.search') + '/image/' + this.data.hotel[0].photos_ids[0] + '.jpg') : ''"></a>
                 </div>
                 <div class="checkout-headr">
                   <div class="checkout-headrb">
                     <div class="checkout-headrp">
                       <div class="chk-left">
-                        <div class="chk-lbl"><a href="#">Andrassy Thai Hotel </a></div>
-                        <div class="chk-lbl-a">Paris, france</div>
+                        <div class="chk-lbl"><a href="#">{{ data.hotel[0].name}}</a></div>
+                        <div class="chk-lbl-a">{{ data.location[0].city}}, {{ data.location[0].country}}</div>
                         <nav class="chk-stars">
                           <ul>
                             <li><img alt="" src="../../assets/img/chk-star-b.png"></li>
@@ -115,7 +125,7 @@
 
                       </div>
                       <div class="chk-right">
-                        <a href="#"><img alt="" src="../../assets/img/chk-edit.png"></a>
+                        <!--<a href="#"><img alt="" src="../../assets/img/chk-edit.png"></a>-->
                       </div>
                       <div class="clear"></div>
                     </div>
@@ -126,11 +136,11 @@
 
               <div class="chk-lines">
                 <div class="chk-line">
-                  <span class="chk-nights">3 Nights</span>
-                  <span class="chk-dates">feb 05, 2015  /  feb 08, 2015</span>
+                  <span class="chk-nights">{{ nights() }} Nights</span>
+                  <span class="chk-dates">{{ formatdate(this.data.checkin_date) }} /  {{ formatdate(this.data.checkout_date) }}</span>
                 </div>
                 <div class="chk-line">
-                  1 STANDARD FAMILY ROOM FOR <span class="chk-persons">3 PERSONS</span>
+                  {{ this.data.room_type }} <span class="chk-persons">{{ this.data.adults }} PERSONS</span>
                 </div>
               </div>
 
@@ -139,28 +149,23 @@
                 <div class="chk-detais-row">
                   <div class="chk-line">
                     <span class="chk-l">Room type</span>
-                    <span class="chk-r">Standard family</span>
+                    <span class="chk-r">{{ this.data.room_type }}</span>
                     <div class="clear"></div>
                   </div>
                   <div class="chk-line">
-                    <span class="chk-l">price</span>
-                    <span class="chk-r">200$</span>
+                    <span class="chk-l">{{ nights() }} nights stay</span>
+                    <span class="chk-r">${{ this.data.price }}</span>
                     <div class="clear"></div>
                   </div>
                   <div class="chk-line">
-                    <span class="chk-l">3 nights stay</span>
-                    <span class="chk-r">600$</span>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="chk-line">
-                    <span class="chk-l">taxes and fees per night</span>
-                    <span class="chk-r">3.52$</span>
+                    <span class="chk-l">cashback</span>
+                    <span class="chk-r">${{ Number((this.data.price * 0.225).toFixed(1)) }}</span>
                     <div class="clear"></div>
                   </div>
                 </div>
                 <div class="chk-total">
                   <div class="chk-total-l">Total Price</div>
-                  <div class="chk-total-r">$603.52</div>
+                  <div class="chk-total-r">${{ Number((this.data.price * 0.775).toFixed(1)) }}</div>
                   <div class="clear"></div>
                 </div>
               </div>
@@ -197,6 +202,12 @@
     methods: {
       send (data) {
         this.$emit('send', data)
+      },
+      formatdate (data) {
+        return moment(data).format('MMM DD, YYYY')
+      },
+      nights () {
+        return Math.round(moment.duration(moment(this.data.checkout_date).diff(moment(this.data.checkin_date))).asDays())
       },
       confirmProgressHours () {
         var currTime = moment()

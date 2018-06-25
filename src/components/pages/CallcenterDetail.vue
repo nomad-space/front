@@ -26,7 +26,7 @@
 
                     <div v-if="data.status != 3 && data.status != 4" class="comlete-alert">
                       <div class="comlete-alert-a">
-                        <b style="color: #ff0000">This Order is Not Confirmed.</b>
+                        <b style="color: #ff0000">This Order is Processed.</b>
                         <span>We have a maximum of {{ days }} days to confirm the booking. {{ confirmProgressHours() }} hours left</span>
                         <div class="about-percent" style="padding-top: 5px;margin-bottom: 0px">
                           <div :data-percentage="confirmProgressStyle()" class="about-percent-a"><span :style="confirmProgressStyle()"></span></div>

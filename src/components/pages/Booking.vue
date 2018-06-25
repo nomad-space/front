@@ -79,6 +79,7 @@
   import Checkout from '@/components/Checkout'
   import NeedHelp from '@/components/NeedHelp'
   import Payment from '@/components/Payment'
+  import moment from 'moment'
   export default {
     components: {
       Payment,
@@ -99,8 +100,8 @@
             hotel_id: parseInt(this.$route.params.hotel_id),
             gate_id: parseInt(this.$route.params.gate_id),
             room_id: parseInt(this.$route.params.room_id),
-            checkin_date: this.$route.params.checkin,
-            checkout_date: this.$route.params.checkout,
+            checkin_date: moment(this.$route.params.checkin).format('YYYY-MM-DDTHH:mm:ssZ'),
+            checkout_date: moment(this.$route.params.checkout).format('YYYY-MM-DDTHH:mm:ssZ'),
             adults: parseInt(this.$route.params.adults),
             price: parseFloat(this.$route.params.price)
           }
