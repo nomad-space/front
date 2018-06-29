@@ -218,7 +218,7 @@
           $self.$http.get($self.$config('api.base') + '/v1/location/' + $self.data.form.location_id).then(
             function (response) { // Success.
               console.log('ga event', 'booking_geo', response.data.data.country, response.data.data.city)
-              $self.$ga.event('booking_geo', response.data.data.country, response.data.data.city);
+              $self.$ga.event('search', response.data.data.country, response.data.data.city);
             },
             function (response) { // Error.
             }
