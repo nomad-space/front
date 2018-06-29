@@ -121,13 +121,22 @@
       // console.log('this.params.search_id', this.params.search_id)
       // console.log('url', searchAPI + '/booking/' + this.params.search_id + '/' + this.params.location_id + '/' + this.params.hotel_id + '/' + this.params.gate_id + '/' + this.params.room_id + '/' + this.params.checkin + '/' + this.params.checkout + '/' + this.params.adults)
 
-      this.$http.get(this.$config('api.search') + '/booking/' + this.params.search_id + '/' + this.params.location_id + '/' + this.params.hotel_id + '/' + this.params.gate_id + '/' + this.params.room_id + '/' + this.params.checkin + '/' + this.params.checkout + '/' + this.params.adults).then(
+      self.$http.get(self.$config('api.search') + '/booking/' + self.params.search_id + '/' + self.params.location_id + '/' + self.params.hotel_id + '/' + self.params.gate_id + '/' + self.params.room_id + '/' + self.params.checkin + '/' + self.params.checkout + '/' + self.params.adults).then(
         function (response) { // Success.
           console.log(response.data);
           self.data = response.data;
           self.loading = false
           self.$set(self, 'data', response.data)
           self.$set(self, 'loading', false)
+
+          self.$http.get(self.$config('api.base') + '/v1/location/' + self.params.location_id).then(
+            function (response) { // Success.
+              console.log('ga event', 'booking_geo', response.data.data.country, response.data.data.city)
+              self.$ga.event('booking_geo', response.data.data.country, response.data.data.city);
+            },
+            function (response) { // Error.
+            }
+          );
         },
         function (response) { // Error.
           console.log('An error occurred.');

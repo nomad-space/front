@@ -215,6 +215,15 @@
 
         $.getJSON( $self.getSearchUrl(), function( data ) {
 
+          $self.$http.get($self.$config('api.base') + '/v1/location/' + $self.data.form.location_id).then(
+            function (response) { // Success.
+              console.log('ga event', 'booking_geo', response.data.data.country, response.data.data.city)
+              $self.$ga.event('booking_geo', response.data.data.country, response.data.data.city);
+            },
+            function (response) { // Error.
+            }
+          );
+
           $self.$set($self, 'search_id', data.search_id)
 
           if ($self.data.form.page > 1) {

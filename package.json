@@ -18,6 +18,7 @@
     "moment": "^2.22.2",
     "socket.io": "^2.0.4",
     "vue": "^2.5.16",
+    "vue-analytics": "^5.12.2",
     "vue-autosuggest": "^1.4.1",
     "vue-axios": "^2.1.1",
     "vue-config-manager": "^0.2.2",

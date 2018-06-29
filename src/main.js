@@ -10,16 +10,26 @@ import routerDriver from '@websanova/vue-auth/drivers/router/vue-router.2.x.js'
 import VueConfigManager from 'vue-config-manager'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VueAnalytics from 'vue-analytics'
 // import Jquery from 'jquery'
 // import JqueryUI from 'jquery-ui'
 /* eslint-disable */
 // var $ = Jquery
 // window.jQuery = Jquery
 
+const isProd = process.env.NODE_ENV === 'production'
 
-// require('webpack-jquery')
-// require('webpack-jquery-ui')
-// require('webpack-jquery-ui/css');
+Vue.use(VueAnalytics, {
+  id: 'UA-121617476-1',
+  autoTracking: {
+    screenview: true
+  },
+  debug: {
+    enabled: !isProd, // default value
+    trace: !isProd, // default value
+    sendHitTask: isProd // default value
+  }
+})
 
 Vue.use(VueConfigManager, {
   defaults: {
