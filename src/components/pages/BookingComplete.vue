@@ -80,15 +80,10 @@
                       <div class="complete-devider"></div>
 
                       <div class="complete-txt">
-                        <h2>Payment Info</h2>
-                        <p>Voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui voluptatem sequi nesciunt. Que porro quisqua. Sed ut perspiciatis unde omnis ste natus error sit voluptatem.</p>
-                      </div>
-
-                      <div class="complete-devider"></div>
-
-                      <div class="complete-txt final">
                         <h2>Booking Details</h2>
-                        <p>Qoluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui voluptatem sequi nesciunt. Que porro quisqua. Sed ut perspiciatis unde omnis ste natus error.</p>
+                        <p>Our website does not charge any fees to the travelers and hotels.  We provide a direct link between you and the hotel you choose. In addition, we check the availability of cashback on average 15% depending on the price policy of the hotel.</p>
+                        <p>Our system requires up to 72 hours to check the booking terms and conditions, as well as the availability of the cashback. On or before this time expires we will send you a notice with details of your booking or advise you if the booking is not available.</p>
+                        <p>If the booking is available, payment will be made in accordance with the payment policy of the hotel you have chosen. In case of cancellation or if the booking terms and conditions are not suitable for you, we will offer you other closest hotels in the location.</p>
                       </div>
 
                     </div>

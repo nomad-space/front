@@ -2539,9 +2539,9 @@
   .list-elements .typography-heading {margin-bottom:37px;}
   .list-row-i {float:left; width:31%; margin-right:3.5%;}
   .list-row-i:last-child {float:right; margin:0px;}
-  /*.marked-a li {line-height: 18px; background:url(./assets/img/marked-01.png) left top no-repeat; font-size:14px; color:#606869; padding:0px 0px 0px 18px; margin-bottom:13px; background-position:left 3px;}*/
-  /*.marked-b li {line-height: 18px;background:url(./assets/img/marked-02.png) left top no-repeat; font-size:14px; color:#606869; padding:0px 0px 0px 18px; margin-bottom:13px; background-position:left 2px;}*/
-  /*.marked-c li {line-height: 18px;background:url(./assets/img/marked-03.png) left top no-repeat; font-size:14px; color:#606869; padding:0px 0px 0px 18px; margin-bottom:13px; background-position:left 2px;}*/
+  .marked-a li {line-height: 18px; background:url(./assets/img/marked-01.png) left top no-repeat; font-size:14px; color:#606869; padding:0px 0px 0px 18px; margin-bottom:13px; background-position:left 3px;}
+  .marked-b li {line-height: 18px;background:url(./assets/img/marked-02.png) left top no-repeat; font-size:14px; color:#606869; padding:0px 0px 0px 18px; margin-bottom:13px; background-position:left 2px;}
+  .marked-c li {line-height: 18px;background:url(./assets/img/marked-03.png) left top no-repeat; font-size:14px; color:#606869; padding:0px 0px 0px 18px; margin-bottom:13px; background-position:left 2px;}
   .small-push-3 {position: static; display: block; width:200px; margin: 0 auto; padding: 0px !important; float: none;}
   .small-push-3 a {width:auto; display: block;}
   .tables {padding-bottom:20px;}

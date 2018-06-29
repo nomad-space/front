@@ -51,9 +51,21 @@
                     </div>
                     <h2>How would you like to pay?</h2>
                     <Payment/>
-                    <div class="booking-complete">
-                      <h2>Review and book your trip</h2>
-                      <p>Voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui voluptatem sequi nesciunt. </p>
+                    <div class="booking-complete typography">
+                      <h2>Payment Info</h2>
+                      <p>
+                        By accepting this booking, you agree to <a>the payment policy</a> of the hotel you have chosen. <br/>
+                        If you cancel your booking later, refund of the payment is regulated by <a>the payment policy</a> of the hotel.<br/>
+                        You also agree to the following conditions of the cashback:
+                      </p>
+                      <nav class="marked-a">
+                        <ul>
+                          <li>Cashback will be paid in 30 days after the final payment for the hotel.</li>
+                          <li>Cashback will be paid in NSP tokens to your electronic wallet , automatically created in our system.</li>
+                          <li>The tokens will be stored in your wallet by default or if you choose the appropriate option on receipt of the cashback. You can use these tokens to pay for hotels during your future travels <span class="hightile-c">or exchange for money at any moment at your choice</span>. In this case, the token rate is not fixed and will be determined on the date of payment in the future.</li>
+                          <li>If you wish to exchange tokens for money, you have to choose the appropriate option within three days after receiving the cashback. The tokens will be exchanged for the currency in which you paid the hotel. In this case, the token rate determined on the date of the final payment for the hotel.</li>
+                        </ul>
+                      </nav>
                       <button type="submit" class="booking-complete-btn">COMPLETE BOOKING</button>
                     </div>
                   </form>
@@ -218,6 +230,7 @@
   .booking-devider {width:100%; height:1px; background:#ebebeb; margin:19px 0px 27px 0px;}
   .booking-devider.no-margin {margin-top:7px;}
   .booking-complete p {font-size:13px; color:#626262; line-height:21px;}
+  .booking-complete li {font-size:13px;}
   .booking-left .booking-complete h2 {margin-bottom:16px;}
   .booking-complete-btn {display:block; margin-top:24px; width:189px; height:40px; background:#ff7200; color:#fff; text-transform:uppercase; border:0px; cursor:pointer; border-radius:2px; font-size:11px; font-family:'Raleway'; font-weight:bold;}
   .booking-complete-btn:hover {background:#ff8521;}
